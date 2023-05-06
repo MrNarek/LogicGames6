@@ -92,8 +92,8 @@ public class Login extends AppCompatActivity {
 
                     if (!Objects.equals(passwordFromDB, userPassword)) {
                         loginUsername.setError(null);
-//                        Intent intent = new Intent(Login.this, MainActivity.class);
-//                        startActivity(intent);
+                        Intent intent = new Intent(Login.this, MainActivity.class);
+                        startActivity(intent);
                     } else {
                         loginPassword.setError("Invalid Credentials");
                         loginPassword.requestFocus();
@@ -110,5 +110,6 @@ public class Login extends AppCompatActivity {
 
             }
         });
+
     }
 }

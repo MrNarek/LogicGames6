@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="#004aad"
+    android:layout_gravity="center"
     android:layout_height="match_parent"
     tools:context=".Colours">
 
     <RelativeLayout
-        android:layout_width="413dp"
+        android:layout_width="match_parent"
         android:layout_height="99dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         android:background="#5271ff"
+        android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         >
 
@@ -124,20 +126,15 @@
         android:layout_width="401dp"
         android:layout_height="113dp"
         android:layout_marginTop="150dp"
+        android:textColor="@color/white"
         android:text="Совпадает ли значение текста на первой табличке с цветом текста на нижней"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="25sp" />
 
     <RelativeLayout
-        android:layout_width="413dp"
+        android:id="@+id/colours"
+        android:layout_width="match_parent"
         android:layout_height="396dp"
-        android:layout_marginTop="264dp"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginTop="264dp">
 
 
         <TextView
@@ -152,6 +149,7 @@
             android:layout_marginTop="13dp"
             android:layout_marginEnd="139dp"
             android:layout_marginBottom="343dp"
+            android:textColor="@color/white"
             android:gravity="center"
             android:text="Значение"
             android:textSize="25sp"
@@ -172,11 +170,13 @@
             android:layout_marginBottom="216dp"
             android:gravity="center"
             android:text=""
+            android:textStyle="bold"
             android:textSize="45sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <TextView
             android:id="@+id/textView7"
@@ -189,6 +189,7 @@
             android:layout_marginTop="189dp"
             android:layout_marginEnd="124dp"
             android:gravity="center"
+            android:textColor="@color/white"
             android:text="Цвет Текста"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -198,42 +199,39 @@
 
         <TextView
             android:id="@+id/clColor"
-            android:layout_width="346dp"
-            android:layout_height="129dp"
+            android:layout_width="358dp"
+            android:layout_height="126dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="37dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginBottom="27dp"
             android:background="#5271ff"
             android:gravity="center"
             android:text=""
             android:textSize="45sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textStyle="bold" />
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/bynYes"
-        android:layout_width="147dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="668dp"
-        android:text="ДА"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/colours"
+        android:layout_marginTop="-1dp"
+        android:gravity="center">
 
-    <Button
-        android:id="@+id/btnNo"
-        android:layout_width="147dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="668dp"
-        android:text="НЕТ"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.852"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/bynYes"
+            android:layout_width="147dp"
+            android:layout_height="62dp"
+            android:layout_marginHorizontal="30dp"
+            android:text="ДА" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnNo"
+            android:layout_width="147dp"
+            android:layout_height="62dp"
+            android:layout_marginHorizontal="30dp"
+            android:text="НЕТ" />
+    </LinearLayout>
+</RelativeLayout>
+
