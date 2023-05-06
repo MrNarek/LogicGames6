@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "121814087753",
+    "project_id": "logic-games-45448",
+    "storage_bucket": "logic-games-45448.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121814087753:android:36cd4a1597facaa958a798",
+        "android_client_info": {
+          "package_name": "com.example.logicgames"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "121814087753-41pr39f9etvvkfugiijn0huffln2p6k9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnBQ8aT6tPZmRyjZx69xEHUXzF7521OFs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "121814087753-41pr39f9etvvkfugiijn0huffln2p6k9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

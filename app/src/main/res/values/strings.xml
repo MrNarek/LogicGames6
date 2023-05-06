@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Logic Games</string>
+    <string name="app_in_name">Logic Games</string>
+    <string name="app_name_after">Logic Games</string>
+    <string name="remind">Log into your account</string>
+    <string name="btnLogin">Log in</string>
+    <string name="btnRegister">Sign Up</string>
+</resources>
