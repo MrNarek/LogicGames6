@@ -17,7 +17,7 @@ public class Colours extends AppCompatActivity {
     Button btnYes, btnNo;
     boolean isTimerTicking = true;
     int pts = 0;
-    int fls = 0;
+    int fls = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,11 +128,12 @@ public class Colours extends AppCompatActivity {
                     rnd = new Random().nextInt(clTexts.length);
                     clColor.setTextColor(Color.parseColor(clColors[rnd]));
                 } else {
-                    if (fls == 3) {
+                    if (fls == 0) {
                         Intent intent1 = new Intent(Colours.this, GuestMode.class);
                         startActivity(intent1);
+                        finish();
                     } else {
-                        fls += 1;
+                        fls -= 1;
                         fails.setText(" " + fls);
                         int rnd = new Random().nextInt(clTexts.length);
                         clText.setText(clTexts[rnd]);
@@ -217,11 +218,11 @@ public class Colours extends AppCompatActivity {
                     rnd = new Random().nextInt(clTexts.length);
                     clColor.setTextColor(Color.parseColor(clColors[rnd]));
                 } else {
-                    if (fls == 3) {
+                    if (fls == 0) {
                         Intent intent1 = new Intent(Colours.this, GuestMode.class);
                         startActivity(intent1);
                     } else {
-                        fls += 1;
+                        fls -= 1;
                         fails.setText(" " + fls);
                         int rnd = new Random().nextInt(clTexts.length);
                         clText.setText(clTexts[rnd]);
