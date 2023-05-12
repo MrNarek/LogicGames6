@@ -19,7 +19,7 @@ public class GuestMode extends AppCompatActivity {
         colours.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(GuestMode.this, Colours.class);
+                Intent intent1 = new Intent(GuestMode.this, InfoColors.class);
                 startActivity(intent1);
             }
         });
