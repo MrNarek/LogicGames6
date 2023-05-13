@@ -17,14 +17,14 @@
          текста на нижней и нажать на соответствущую  кнопку. В этом примере ответ  'ДА' потому что
          на верхней табличке слово 'Красный' и цвет слово на нижней табличке тоже красный"
         android:textColor="@color/white"
-        android:textSize="25sp" />
+        android:textSize="21sp" />
 
     <RelativeLayout
         android:id="@+id/colours"
         android:layout_width="match_parent"
         android:layout_height="286dp"
-        android:layout_below="@+id/textView4"
-        android:layout_marginTop="-7dp">
+        android:gravity="center"
+        android:layout_marginTop="300dp">
 
 
         <TextView
@@ -81,7 +81,7 @@
                 android:layout_height="62dp"
                 android:backgroundTint="#808080"
                 android:layout_marginHorizontal="30dp"
-                android:text="START GAME" />
+                android:text="НЕТ" />
         </LinearLayout>
 
     <Button
@@ -91,6 +91,6 @@
         android:layout_below="@+id/YesNo"
         android:layout_marginTop="17dp"
         android:layout_marginLeft="200dp"
-        android:text="Button" />
+        android:text="START GAME" />
 
 </RelativeLayout>

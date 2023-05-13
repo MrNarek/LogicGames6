@@ -20,12 +20,11 @@
 
 
 
-<LinearLayout
+<RelativeLayout
     android:layout_below="@id/textView"
     android:layout_width="match_parent"
     android:layout_height="350dp"
-    android:layout_marginTop="20dp"
-    android:orientation="horizontal">
+    android:layout_marginTop="20dp">
 
 
     <Button
@@ -34,12 +33,25 @@
         android:layout_height="116dp"
         android:layout_gravity="center"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
         android:backgroundTint="@color/teal_700"
         android:text="Colours"
         android:textSize="30sp" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/mathematics"
+        android:layout_width="277dp"
+        android:layout_height="116dp"
+        android:layout_gravity="center"
+        android:layout_below="@+id/colours"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="45dp"
+        android:backgroundTint="@color/teal_700"
+        android:text="Colours"
+        android:textSize="30sp" />
+
+</RelativeLayout>
 
 
 </RelativeLayout>
