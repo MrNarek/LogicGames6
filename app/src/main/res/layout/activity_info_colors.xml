@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00ff7f"
+    android:background="@color/lavendar"
     tools:context=".InfoColors">
 
 
@@ -13,9 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Совпадает ли значение текста на верхней табличке с цветом
-         текста на нижней и нажать на соответствущую  кнопку. В этом примере ответ  'ДА' потому что
-         на верхней табличке слово 'Красный' и цвет слово на нижней табличке тоже красный"
+        android:text="В этой игре вам нужно определить совпадает ли значение текста на верхней табличке с цветом
+         текста на нижней, и нажать на соответствущую  кнопку. В этом примере ответ  'ДА' потому что
+         на верхней табличке слово 'Красный' и цвет слова на нижней табличке тоже красный"
         android:textColor="@color/white"
         android:textSize="21sp" />
 

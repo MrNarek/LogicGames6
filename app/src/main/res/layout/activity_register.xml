@@ -60,7 +60,9 @@
              android:id="@+id/signup_password"
              android:layout_marginTop="20dp"
              android:padding="8dp"
+             android:inputType="textPassword"
              android:hint="Password"
+             android:drawableRight="@drawable/visoff"
              android:textColor="@color/black"
              android:background="@drawable/lv_border"/>
 
@@ -70,7 +72,9 @@
              android:id="@+id/signup_confirm_password"
              android:layout_marginTop="20dp"
              android:padding="8dp"
+             android:inputType="textPassword"
              android:hint="Confirm Password"
+             android:drawableRight="@drawable/visoff"
              android:textColor="@color/black"
              android:background="@drawable/lv_border"/>
 

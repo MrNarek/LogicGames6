@@ -3,8 +3,10 @@ package com.example.logicgames;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -65,6 +67,9 @@ public class Mathematics extends AppCompatActivity {
     }
 
     private void generateExpressions() {
+        firstButton.setBackgroundColor(Color.GRAY);
+        equalButton.setBackgroundColor(Color.GRAY);
+        secondButton.setBackgroundColor(Color.GRAY);
         try {
             // Generate two random numbers between 1 and 20
             int num1 = (int) (Math.random() * 20) + 1;
@@ -96,12 +101,15 @@ public class Mathematics extends AppCompatActivity {
                 // User's answer is correct
                 score++;
                 scoreView.setText(String.valueOf(score));
+                firstButton.setBackgroundColor(Color.GREEN);
             } else if (a == 3 && result2 > result1) {
                 score++;
                 scoreView.setText(String.valueOf(score));
+                secondButton.setBackgroundColor(Color.GREEN);
             } else if (a == 2 && result1 == result2) {
                 score++;
                 scoreView.setText(String.valueOf(score));
+                equalButton.setBackgroundColor(Color.GREEN);
             } else {
                 if (lvs == 0) {
                     Intent intent1 = new Intent(Mathematics.this, GuestMode.class);
@@ -110,9 +118,25 @@ public class Mathematics extends AppCompatActivity {
                 } else {
                     lvs -= 1;
                     lives.setText(" " + lvs);
+                    switch (a) {
+                        case 1: firstButton.setBackgroundColor(Color.RED);
+                        break;
+                        case 2: equalButton.setBackgroundColor(Color.RED);
+                        break;
+                        case 3: secondButton.setBackgroundColor(Color.RED);
+                        break;
+                    }
                 }
             }
-            generateExpressions();
+
+            Handler handler = new Handler();
+            Runnable x = new Runnable() {
+                @Override
+                public void run() {
+                    generateExpressions();
+                }
+            };
+            handler.postDelayed(x, 200);
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
