@@ -5,4 +5,7 @@
     <string name="remind">Log into your account</string>
     <string name="btnLogin">Log in</string>
     <string name="btnRegister">Sign Up</string>
+    <string name="Time">Time</string>
+    <string name="Points">Points</string>
+    <string name="Lives">Lives</string>
 </resources>

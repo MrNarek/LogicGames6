@@ -1,7 +1,10 @@
 package com.example.logicgames;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,9 +13,10 @@ import java.util.Random;
 
 
 public class Mathematics extends AppCompatActivity {
-    private TextView expression1, expression2, scoreView;
+    private TextView expression1, expression2, scoreView, timer, lives;
     private Button firstButton, equalButton, secondButton;
     private int score = 0;
+    int lvs = 3;
 
     // Method to evaluate a math expression and return the result
     private double evaluateExpression(String expressionStr) {
@@ -98,7 +102,17 @@ public class Mathematics extends AppCompatActivity {
             } else if (a == 2 && result1 == result2) {
                 score++;
                 scoreView.setText(String.valueOf(score));
+            } else {
+                if (lvs == 0) {
+                    Intent intent1 = new Intent(Mathematics.this, GuestMode.class);
+                    startActivity(intent1);
+                    finish();
+                } else {
+                    lvs -= 1;
+                    lives.setText(" " + lvs);
+                }
             }
+            generateExpressions();
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
@@ -116,6 +130,24 @@ public class Mathematics extends AppCompatActivity {
         firstButton = findViewById(R.id.firstButton);
         equalButton = findViewById(R.id.equalButton);
         secondButton = findViewById(R.id.secondButton);
+        timer = findViewById(R.id.timer);
+        lives = findViewById(R.id.lives);
+
+
+        new CountDownTimer(30000, 1000) {
+            @Override
+            public void onTick(long l) {
+                timer.setText("0:" + l / 1000);
+                if ((l / 1000) < 10) timer.setText("0:0" + l / 1000);
+            }
+
+            @Override
+            public void onFinish() {
+                Intent intent1 = new Intent(Mathematics.this, GuestMode.class);
+                startActivity(intent1);
+                finish();
+            }
+        }.start();
 
 
         // Set click listeners for buttons

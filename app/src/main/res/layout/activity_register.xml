@@ -57,20 +57,20 @@
          <EditText
              android:layout_width="match_parent"
              android:layout_height="50dp"
-             android:id="@+id/signup_username"
+             android:id="@+id/signup_password"
              android:layout_marginTop="20dp"
              android:padding="8dp"
-             android:hint="Username"
+             android:hint="Password"
              android:textColor="@color/black"
              android:background="@drawable/lv_border"/>
 
          <EditText
              android:layout_width="match_parent"
              android:layout_height="50dp"
-             android:id="@+id/signup_password"
+             android:id="@+id/signup_confirm_password"
              android:layout_marginTop="20dp"
              android:padding="8dp"
-             android:hint="Password"
+             android:hint="Confirm Password"
              android:textColor="@color/black"
              android:background="@drawable/lv_border"/>
 

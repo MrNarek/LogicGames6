@@ -13,11 +13,11 @@ import android.widget.TextView;
 import java.util.Random;
 
 public class Colours extends AppCompatActivity {
-    TextView timer, points, clText, clColor, fails;
+    TextView timer, points, clText, clColor, lives;
     Button btnYes, btnNo;
     boolean isTimerTicking = true;
     int pts = 0;
-    int fls = 3;
+    int lvs = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class Colours extends AppCompatActivity {
         btnNo = findViewById(R.id.btnNo);
         btnYes = findViewById(R.id.bynYes);
         points = findViewById(R.id.points);
-        fails = findViewById(R.id.fails);
+        lives = findViewById(R.id.lives);
 
 
         new CountDownTimer(30000, 1000) {
@@ -43,6 +43,7 @@ public class Colours extends AppCompatActivity {
             public void onFinish() {
                 Intent intent1 = new Intent(Colours.this, GuestMode.class);
                 startActivity(intent1);
+                finish();
                 isTimerTicking = false;
             }
         }.start();
@@ -128,13 +129,13 @@ public class Colours extends AppCompatActivity {
                     rnd = new Random().nextInt(clTexts.length);
                     clColor.setTextColor(Color.parseColor(clColors[rnd]));
                 } else {
-                    if (fls == 0) {
+                    if (lvs == 0) {
                         Intent intent1 = new Intent(Colours.this, GuestMode.class);
                         startActivity(intent1);
                         finish();
                     } else {
-                        fls -= 1;
-                        fails.setText(" " + fls);
+                        lvs -= 1;
+                        lives.setText(" " + lvs);
                         int rnd = new Random().nextInt(clTexts.length);
                         clText.setText(clTexts[rnd]);
                         rnd = new Random().nextInt(clTexts.length);
@@ -218,12 +219,13 @@ public class Colours extends AppCompatActivity {
                     rnd = new Random().nextInt(clTexts.length);
                     clColor.setTextColor(Color.parseColor(clColors[rnd]));
                 } else {
-                    if (fls == 0) {
+                    if (lvs == 0) {
                         Intent intent1 = new Intent(Colours.this, GuestMode.class);
                         startActivity(intent1);
+                        finish();
                     } else {
-                        fls -= 1;
-                        fails.setText(" " + fls);
+                        lvs -= 1;
+                        lives.setText(" " + lvs);
                         int rnd = new Random().nextInt(clTexts.length);
                         clText.setText(clTexts[rnd]);
                         rnd = new Random().nextInt(clTexts.length);
