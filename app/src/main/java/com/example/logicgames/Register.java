@@ -2,6 +2,7 @@ package com.example.logicgames;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -13,9 +14,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class Register extends AppCompatActivity {
@@ -25,6 +28,7 @@ public class Register extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference reference;
     boolean passwordVisible;
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,11 +50,24 @@ public class Register extends AppCompatActivity {
                 if (validateEmail() && validatePassword()) {
                     database = FirebaseDatabase.getInstance();
                     reference = database.getReference("users");
-
+                    reference.setValue("User");
                     String name = signupName.getText().toString();
                     String email = signupEmail.getText().toString();
                     String password = signupPassword.getText().toString();
 
+                    final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                    firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener((task) -> {
+                        if (task.isSuccessful()) {
+                            Objects.requireNonNull(firebaseAuth.getCurrentUser()).sendEmailVerification().
+                                    addOnCompleteListener(task1 -> {
+                                        if (task1.isSuccessful()) {
+                                            Toast.makeText(Register.this, "Account successfully created, please verify your email", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(Register.this, Objects.requireNonNull(Objects.requireNonNull(task1.getException()).getMessage()), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                        }
+                    });
                     HelperClass helperClass = new HelperClass(name, email, password);
                     reference.child(name).setValue(helperClass);
 
@@ -144,7 +161,7 @@ public class Register extends AppCompatActivity {
             signupPassword.setError("Password must contain at least one digit");
             return false;
         } else if (!password.equals(confirm)) {
-            confirmPassword.setError("Passwords does not match");
+            confirmPassword.setError(getString(R.string.passwordDoesntMatch));
             return false;
         } else if (name.isEmpty()) {
             signupName.setError("Name cannot be empty");

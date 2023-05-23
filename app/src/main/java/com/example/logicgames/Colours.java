@@ -2,10 +2,12 @@ package com.example.logicgames;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,6 +21,45 @@ public class Colours extends AppCompatActivity {
     int pts = 0;
     int lvs = 3;
 
+
+
+    public void generateColor(TextView clText, TextView clColor, String[] clTexts, String[] clColors) {
+        btnYes.setBackgroundColor(Color.GRAY);
+        Handler handler = new Handler();
+        Runnable x = new Runnable() {
+            @Override
+            public void run() {
+                int rnd = new Random().nextInt(clTexts.length);
+                clText.setText(clTexts[rnd]);
+                rnd = new Random().nextInt(clTexts.length);
+                clText.setTextColor(Color.parseColor(clColors[rnd]));
+                rnd = new Random().nextInt(clTexts.length);
+                clColor.setText(clTexts[rnd]);
+                rnd = new Random().nextInt(clTexts.length);
+                clColor.setTextColor(Color.parseColor(clColors[rnd]));
+            }
+        };
+        handler.postDelayed(x, 100);
+    }
+
+        public void generateColorNo(TextView clText, TextView clColor, String[] clTexts, String[] clColors) {
+            btnNo.setBackgroundColor(Color.GRAY);
+            Handler handler = new Handler();
+            Runnable x = new Runnable() {
+                @Override
+                public void run() {
+                    int rnd = new Random().nextInt(clTexts.length);
+                    clText.setText(clTexts[rnd]);
+                    rnd = new Random().nextInt(clTexts.length);
+                    clText.setTextColor(Color.parseColor(clColors[rnd]));
+                    rnd = new Random().nextInt(clTexts.length);
+                    clColor.setText(clTexts[rnd]);
+                    rnd = new Random().nextInt(clTexts.length);
+                    clColor.setTextColor(Color.parseColor(clColors[rnd]));
+                }
+            };
+            handler.postDelayed(x, 100);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,75 +100,83 @@ public class Colours extends AppCompatActivity {
         rnd = new Random().nextInt(clTexts.length);
         clColor.setTextColor(Color.parseColor(clColors[rnd]));
         Random random = new Random();
+
         btnYes.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 if (clText.getText().toString().equals(clTexts[0]) && clColor.getCurrentTextColor() == Color.parseColor("#fc3131")) {
                     pts += 1;
                     points.setText(" " + (pts));
-                    int rnd = new Random().nextInt(clTexts.length);
-                    clText.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clText.setTextColor(Color.parseColor(clColors[rnd]));
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setTextColor(Color.parseColor(clColors[rnd]));
+                    btnYes.setBackgroundColor(Color.GREEN);
+                    Handler handler = new Handler();
+                    Runnable x = new Runnable() {
+                        @Override
+                        public void run() {
+                            generateColor(clText, clColor, clTexts, clColors);
+                        }
+                    };
+                    handler.postDelayed(x, 100);
                 } else if (clText.getText().toString().equals(clTexts[1]) && clColor.getCurrentTextColor() == Color.parseColor("#99ff99")) {
                     pts += 1;
                     points.setText(" " + (pts));
-                    int rnd = new Random().nextInt(clTexts.length);
-                    clText.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clText.setTextColor(Color.parseColor(clColors[rnd]));
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setTextColor(Color.parseColor(clColors[rnd]));
+                    btnYes.setBackgroundColor(Color.GREEN);
+                    Handler handler = new Handler();
+                    Runnable x = new Runnable() {
+                        @Override
+                        public void run() {
+                            generateColor(clText, clColor, clTexts, clColors);
+                        }
+                    };
+                    handler.postDelayed(x, 100);
                 } else if (clText.getText().toString().equals(clTexts[2]) && clColor.getCurrentTextColor() == Color.parseColor("#66ccff")) {
                     pts += 1;
                     points.setText(" " + (pts));
-                    int rnd = new Random().nextInt(clTexts.length);
-                    clText.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clText.setTextColor(Color.parseColor(clColors[rnd]));
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setTextColor(Color.parseColor(clColors[rnd]));
+                    btnYes.setBackgroundColor(Color.GREEN);
+                    Handler handler = new Handler();
+                    Runnable x = new Runnable() {
+                        @Override
+                        public void run() {
+                            generateColor(clText, clColor, clTexts, clColors);
+                        }
+                    };
+                    handler.postDelayed(x, 100);
                 } else if (clText.getText().toString().equals(clTexts[3]) && clColor.getCurrentTextColor() == Color.YELLOW) {
                     pts += 1;
                     points.setText(" " + (pts));
-                    int rnd = new Random().nextInt(clTexts.length);
-                    clText.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clText.setTextColor(Color.parseColor(clColors[rnd]));
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setTextColor(Color.parseColor(clColors[rnd]));
+                    btnYes.setBackgroundColor(Color.GREEN);
+                    Handler handler = new Handler();
+                    Runnable x = new Runnable() {
+                        @Override
+                        public void run() {
+                            generateColor(clText, clColor, clTexts, clColors);
+                        }
+                    };
+                    handler.postDelayed(x, 100);
                 } else if (clText.getText().toString().equals(clTexts[4]) && clColor.getCurrentTextColor() == Color.BLACK) {
                     pts += 1;
                     points.setText(" " + (pts));
-                    int rnd = new Random().nextInt(clTexts.length);
-                    clText.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clText.setTextColor(Color.parseColor(clColors[rnd]));
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setTextColor(Color.parseColor(clColors[rnd]));
+                    btnYes.setBackgroundColor(Color.GREEN);
+                    Handler handler = new Handler();
+                    Runnable x = new Runnable() {
+                        @Override
+                        public void run() {
+                            generateColor(clText, clColor, clTexts, clColors);
+                        }
+                    };
+                    handler.postDelayed(x, 100);
                 } else if (clText.getText().toString().equals(clTexts[5]) && clColor.getCurrentTextColor() == Color.parseColor("#8b01f4")) {
                     pts += 1;
                     points.setText(" " + (pts));
-                    int rnd = new Random().nextInt(clTexts.length);
-                    clText.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clText.setTextColor(Color.parseColor(clColors[rnd]));
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setTextColor(Color.parseColor(clColors[rnd]));
+                    btnYes.setBackgroundColor(Color.GREEN);
+                    Handler handler = new Handler();
+                    Runnable x = new Runnable() {
+                        @Override
+                        public void run() {
+                            generateColor(clText, clColor, clTexts, clColors);
+                        }
+                    };
+                    handler.postDelayed(x, 100);
                 } else {
                     if (lvs == 0) {
                         Intent intent1 = new Intent(Colours.this, GuestMode.class);
@@ -136,14 +185,15 @@ public class Colours extends AppCompatActivity {
                     } else {
                         lvs -= 1;
                         lives.setText(" " + lvs);
-                        int rnd = new Random().nextInt(clTexts.length);
-                        clText.setText(clTexts[rnd]);
-                        rnd = new Random().nextInt(clTexts.length);
-                        clText.setTextColor(Color.parseColor(clColors[rnd]));
-                        rnd = new Random().nextInt(clTexts.length);
-                        clColor.setText(clTexts[rnd]);
-                        rnd = new Random().nextInt(clTexts.length);
-                        clColor.setTextColor(Color.parseColor(clColors[rnd]));
+                        btnYes.setBackgroundColor(Color.RED);
+                        Handler handler = new Handler();
+                        Runnable x = new Runnable() {
+                            @Override
+                            public void run() {
+                                generateColor(clText, clColor, clTexts, clColors);
+                            }
+                        };
+                        handler.postDelayed(x, 100);
                     }
                 }
             }
@@ -155,69 +205,75 @@ public class Colours extends AppCompatActivity {
                 if (clText.getText().toString().equals(clTexts[0]) && clColor.getCurrentTextColor() != Color.parseColor("#fc3131")) {
                     pts += 1;
                     points.setText(" " + (pts));
-                    int rnd = new Random().nextInt(clTexts.length);
-                    clText.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clText.setTextColor(Color.parseColor(clColors[rnd]));
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setTextColor(Color.parseColor(clColors[rnd]));
+                    btnNo.setBackgroundColor(Color.GREEN);
+                    Handler handler = new Handler();
+                    Runnable x = new Runnable() {
+                        @Override
+                        public void run() {
+                            generateColorNo(clText, clColor, clTexts, clColors);
+                        }
+                    };
+                    handler.postDelayed(x, 100);
                 } else if (clText.getText().toString().equals(clTexts[1]) && clColor.getCurrentTextColor() != Color.parseColor("#99ff99")) {
                     pts += 1;
                     points.setText(" " + (pts));
-                    int rnd = new Random().nextInt(clTexts.length);
-                    clText.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clText.setTextColor(Color.parseColor(clColors[rnd]));
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setTextColor(Color.parseColor(clColors[rnd]));
+                    btnNo.setBackgroundColor(Color.GREEN);
+                    Handler handler = new Handler();
+                    Runnable x = new Runnable() {
+                        @Override
+                        public void run() {
+                            generateColorNo(clText, clColor, clTexts, clColors);
+                        }
+                    };
+                    handler.postDelayed(x, 100);
                 } else if (clText.getText().toString().equals(clTexts[2]) && clColor.getCurrentTextColor() != Color.parseColor("#66ccff")) {
                     pts += 1;
                     points.setText(" " + (pts));
-                    int rnd = new Random().nextInt(clTexts.length);
-                    clText.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clText.setTextColor(Color.parseColor(clColors[rnd]));
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setTextColor(Color.parseColor(clColors[rnd]));
+                    btnNo.setBackgroundColor(Color.GREEN);
+                    Handler handler = new Handler();
+                    Runnable x = new Runnable() {
+                        @Override
+                        public void run() {
+                            generateColorNo(clText, clColor, clTexts, clColors);
+                        }
+                    };
+                    handler.postDelayed(x, 100);
                 } else if (clText.getText().toString().equals(clTexts[3]) && clColor.getCurrentTextColor() != Color.YELLOW) {
                     pts += 1;
                     points.setText(" " + (pts));
-                    int rnd = new Random().nextInt(clTexts.length);
-                    clText.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clText.setTextColor(Color.parseColor(clColors[rnd]));
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setTextColor(Color.parseColor(clColors[rnd]));
+                    btnNo.setBackgroundColor(Color.GREEN);
+                    Handler handler = new Handler();
+                    Runnable x = new Runnable() {
+                        @Override
+                        public void run() {
+                            generateColorNo(clText, clColor, clTexts, clColors);
+                        }
+                    };
+                    handler.postDelayed(x, 100);
                 } else if (clText.getText().toString().equals(clTexts[4]) && clColor.getCurrentTextColor() != Color.BLACK) {
                     pts += 1;
                     points.setText(" " + (pts));
-                    int rnd = new Random().nextInt(clTexts.length);
-                    clText.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clText.setTextColor(Color.parseColor(clColors[rnd]));
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setTextColor(Color.parseColor(clColors[rnd]));
+                    btnNo.setBackgroundColor(Color.GREEN);
+                    Handler handler = new Handler();
+                    Runnable x = new Runnable() {
+                        @Override
+                        public void run() {
+                            generateColorNo(clText, clColor, clTexts, clColors);
+                        }
+                    };
+                    handler.postDelayed(x, 100);
                 } else if (clText.getText().toString().equals(clTexts[5]) && clColor.getCurrentTextColor() != Color.parseColor("#8b01f4")) {
                     pts += 1;
                     points.setText(" " + (pts));
-                    int rnd = new Random().nextInt(clTexts.length);
-                    clText.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clText.setTextColor(Color.parseColor(clColors[rnd]));
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setText(clTexts[rnd]);
-                    rnd = new Random().nextInt(clTexts.length);
-                    clColor.setTextColor(Color.parseColor(clColors[rnd]));
+                    btnNo.setBackgroundColor(Color.GREEN);
+                    Handler handler = new Handler();
+                    Runnable x = new Runnable() {
+                        @Override
+                        public void run() {
+                            generateColorNo(clText, clColor, clTexts, clColors);
+                        }
+                    };
+                    handler.postDelayed(x, 100);
                 } else {
                     if (lvs == 0) {
                         Intent intent1 = new Intent(Colours.this, GuestMode.class);
@@ -226,14 +282,8 @@ public class Colours extends AppCompatActivity {
                     } else {
                         lvs -= 1;
                         lives.setText(" " + lvs);
-                        int rnd = new Random().nextInt(clTexts.length);
-                        clText.setText(clTexts[rnd]);
-                        rnd = new Random().nextInt(clTexts.length);
-                        clText.setTextColor(Color.parseColor(clColors[rnd]));
-                        rnd = new Random().nextInt(clTexts.length);
-                        clColor.setText(clTexts[rnd]);
-                        rnd = new Random().nextInt(clTexts.length);
-                        clColor.setTextColor(Color.parseColor(clColors[rnd]));
+                        btnNo.setBackgroundColor(Color.RED);
+                        generateColorNo(clText, clColor, clTexts, clColors);
                     }
                 }
             }

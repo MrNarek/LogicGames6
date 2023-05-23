@@ -8,4 +8,5 @@
     <string name="Time">Time</string>
     <string name="Points">Points</string>
     <string name="Lives">Lives</string>
+    <string name="passwordDoesntMatch">Passwords does not match</string>
 </resources>
