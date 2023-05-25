@@ -1,5 +1,6 @@
 package com.example.logicgames;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -14,6 +15,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -58,12 +61,17 @@ public class Register extends AppCompatActivity {
                     final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
                     firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener((task) -> {
                         if (task.isSuccessful()) {
-                            Objects.requireNonNull(firebaseAuth.getCurrentUser()).sendEmailVerification().
-                                    addOnCompleteListener(task1 -> {
-                                        if (task1.isSuccessful()) {
-                                            Toast.makeText(Register.this, "Account successfully created, please verify your email", Toast.LENGTH_SHORT).show();
-                                        } else {
-                                            Toast.makeText(Register.this, Objects.requireNonNull(Objects.requireNonNull(task1.getException()).getMessage()), Toast.LENGTH_SHORT).show();
+                            firebaseAuth.getCurrentUser().sendEmailVerification().
+                                    addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                           if (task.isSuccessful()) {
+                                               Toast.makeText(Register.this, "User registered successfully, please verify your email", Toast.LENGTH_SHORT).show();
+                                               signupEmail.setText("");
+                                               signupPassword.setText("");
+                                           } else {
+                                               Toast.makeText(Register.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                           }
                                         }
                                     });
                         }

@@ -3,17 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#adffad"
+    android:background="#00ffdd"
     android:layout_height="match_parent"
     tools:context=".GuestMode">
 
     <TextView
 
         android:id="@+id/textView"
-        android:layout_width="300dp"
+        android:layout_width="400dp"
         android:layout_height="102dp"
         android:layout_marginTop="20sp"
-        android:text="Choose Game       Mode"
+        android:textColor="#112211"
+        android:text="@string/choose_game_mode"
         android:textSize="40sp"
         />
 
@@ -29,25 +30,24 @@
 
     <Button
         android:id="@+id/colours"
-        android:layout_width="277dp"
-        android:layout_height="116dp"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="20dp"
-        android:layout_weight="1"
-        android:backgroundTint="@color/teal_700"
+        android:background="@drawable/btn_colors"
         android:text="Colours"
         android:textSize="30sp" />
 
     <Button
         android:id="@+id/mathematics"
-        android:layout_width="277dp"
-        android:layout_height="116dp"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
         android:layout_below="@+id/colours"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="45dp"
-        android:backgroundTint="@color/teal_700"
+        android:background="@drawable/btnmath"
         android:text="Mathematics"
         android:textSize="30sp" />
 

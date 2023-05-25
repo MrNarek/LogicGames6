@@ -24,7 +24,7 @@ public class Colours extends AppCompatActivity {
 
 
     public void generateColor(TextView clText, TextView clColor, String[] clTexts, String[] clColors) {
-        btnYes.setBackgroundColor(Color.GRAY);
+        btnYes.setBackgroundColor(Color.parseColor("#BDB7AB"));
         Handler handler = new Handler();
         Runnable x = new Runnable() {
             @Override
@@ -39,11 +39,11 @@ public class Colours extends AppCompatActivity {
                 clColor.setTextColor(Color.parseColor(clColors[rnd]));
             }
         };
-        handler.postDelayed(x, 100);
+        handler.postDelayed(x, 70);
     }
 
         public void generateColorNo(TextView clText, TextView clColor, String[] clTexts, String[] clColors) {
-            btnNo.setBackgroundColor(Color.GRAY);
+            btnNo.setBackgroundColor(Color.parseColor("#BDB7AB"));
             Handler handler = new Handler();
             Runnable x = new Runnable() {
                 @Override
@@ -74,6 +74,7 @@ public class Colours extends AppCompatActivity {
 
 
         new CountDownTimer(30000, 1000) {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onTick(long l) {
                 timer.setText("0:" + l / 1000);
@@ -200,11 +201,12 @@ public class Colours extends AppCompatActivity {
         });
 
         btnNo.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 if (clText.getText().toString().equals(clTexts[0]) && clColor.getCurrentTextColor() != Color.parseColor("#fc3131")) {
                     pts += 1;
-                    points.setText(" " + (pts));
+                    points.setText(String.format(" %d", pts));
                     btnNo.setBackgroundColor(Color.GREEN);
                     Handler handler = new Handler();
                     Runnable x = new Runnable() {

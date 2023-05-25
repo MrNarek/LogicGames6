@@ -9,4 +9,5 @@
     <string name="Points">Points</string>
     <string name="Lives">Lives</string>
     <string name="passwordDoesntMatch">Passwords does not match</string>
+    <string name="choose_game_mode">  Choose game mode</string>
 </resources>
