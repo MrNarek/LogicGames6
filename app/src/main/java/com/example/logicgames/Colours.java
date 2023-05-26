@@ -285,7 +285,14 @@ public class Colours extends AppCompatActivity {
                         lvs -= 1;
                         lives.setText(" " + lvs);
                         btnNo.setBackgroundColor(Color.RED);
-                        generateColorNo(clText, clColor, clTexts, clColors);
+                        Handler handler = new Handler();
+                        Runnable x = new Runnable() {
+                            @Override
+                            public void run() {
+                                generateColorNo(clText, clColor, clTexts, clColors);
+                            }
+                        };
+                        handler.postDelayed(x, 100);
                     }
                 }
             }

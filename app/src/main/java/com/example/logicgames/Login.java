@@ -3,6 +3,7 @@ package com.example.logicgames;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
@@ -28,6 +29,7 @@ public class Login extends AppCompatActivity {
     Button loginButton;
     TextView signupRedirectText;
     boolean passwordVisible;
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +61,7 @@ public class Login extends AppCompatActivity {
 
 
         loginPassword.setOnTouchListener(new View.OnTouchListener() {
+
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 final int Right = 2;
@@ -110,7 +113,7 @@ public class Login extends AppCompatActivity {
         String userPassword = loginPassword.getText().toString().trim();
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-        Query checkUserDatabase = reference.orderByChild("username").equalTo(userName);
+        Query checkUserDatabase = reference.orderByChild("name").equalTo(userName);
 
         checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
