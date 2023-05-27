@@ -307,7 +307,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/visibility/baseline_visibility_24.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/logout/baseline_logout_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -317,8 +317,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="b201e3" />
-                            <entry key="outputName" value="vison" />
+                            <entry key="outputName" value="ic_baseline_logout_24" />
                             <entry key="sourceFile" value="C:\Users\DELL\Desktop\LogicGames8" />
                           </map>
                         </option>

@@ -60,20 +60,26 @@ public class Register extends AppCompatActivity {
 
                     final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
                     firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener((task) -> {
-                            firebaseAuth.getCurrentUser().sendEmailVerification().
-                                    addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                Toast.makeText(Register.this, "User registered successfully, please verify your email", Toast.LENGTH_SHORT).show();
-                                                signupEmail.setText("");
-                                                signupPassword.setText("");
-                                            } else {
-                                                Toast.makeText(Register.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    });
+                        if (task.isSuccessful()) {
+                            if (firebaseAuth.getCurrentUser().isEmailVerified()) {
 
+                            } else {
+                                firebaseAuth.getCurrentUser().sendEmailVerification().
+                                        addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Toast.makeText(Register.this, "User registered successfully, please verify your email", Toast.LENGTH_SHORT).show();
+                                                    signupEmail.setText("");
+                                                    signupPassword.setText("");
+                                                } else {
+                                                    Toast.makeText(Register.this, Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
+                            }
+                        } else
+                            Toast.makeText(Register.this, Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                     });
                     HelperClass helperClass = new HelperClass(name, email, password);
                     reference.child(name).setValue(helperClass);
