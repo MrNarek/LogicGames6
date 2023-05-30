@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -73,7 +74,8 @@ public class Colours extends AppCompatActivity {
         lives = findViewById(R.id.lives);
 
 
-        new CountDownTimer(30000, 1000) {
+        CountDownTimer start = new CountDownTimer(30000, 1000) {
+
             @SuppressLint("SetTextI18n")
             @Override
             public void onTick(long l) {

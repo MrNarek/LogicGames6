@@ -29,6 +29,7 @@ public class Register extends AppCompatActivity {
     TextView loginRedirectText;
     Button signupButton;
     FirebaseDatabase database;
+    public static String name;
     DatabaseReference reference;
     boolean passwordVisible;
     @SuppressLint("ClickableViewAccessibility")
@@ -54,7 +55,7 @@ public class Register extends AppCompatActivity {
                     database = FirebaseDatabase.getInstance();
                     reference = database.getReference("users");
                     reference.setValue("User");
-                    String name = signupName.getText().toString();
+                    name = signupName.getText().toString();
                     String email = signupEmail.getText().toString();
                     String password = signupPassword.getText().toString();
 

@@ -1,5 +1,6 @@
 package com.example.logicgames;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -29,10 +30,12 @@ import java.util.Objects;
 public class Profile extends Fragment {
     TextView profileName, profileEmail, profilePassword;
     TextView titleName;
+    TextView colorsRec, mathRec;
     private FirebaseAuth mAuth;
     String nameUser, emailUser, passwordUser;
     private DatabaseReference myRef;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,6 +45,8 @@ public class Profile extends Fragment {
          profileName = root.findViewById(R.id.profileName);
          profileEmail = root.findViewById(R.id.profileEmail);
          profilePassword = root.findViewById(R.id.profilePassword);
+         colorsRec = root.findViewById(R.id.colorsRecord);
+         mathRec = root.findViewById(R.id.mathematicsRecord);
 
 
          showUserData();
@@ -61,9 +66,11 @@ public class Profile extends Fragment {
                   String name = userSnapshot.child("name").getValue(String.class);
                   String email = userSnapshot.child("email").getValue(String.class);
                   String password = userSnapshot.child("password").getValue(String.class);
+                  String ProfMathRec = userSnapshot.child("Math Rec").getValue(String.class);
                   profileName.setText(name);
                   profileEmail.setText(email);
                   profilePassword.setText(password);
+                  mathRec.setText(ProfMathRec);
               }
             }
 

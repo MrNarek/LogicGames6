@@ -1,16 +1,13 @@
 <resources>
     <string name="app_name">Logic Games</string>
     <string name="app_in_name">Logic Games</string>
-    <string name="app_name_after">Logic Games</string>
     <string name="remind">Log into your account</string>
     <string name="btnLogin">Log in</string>
-    <string name="btnRegister">Sign Up</string>
     <string name="Time">Time</string>
     <string name="Points">Points</string>
     <string name="Lives">Lives</string>
     <string name="passwordDoesntMatch">Passwords does not match</string>
     <string name="choose_game_mode">  Choose game mode</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hintColors">В этой игре вам нужно определить совпадает ли значение текста на верхней табличке с цветом текста на нижней, и нажать на соответствущую кнопку. В этом примере ответ \'ДА\' потому что на верхней табличке слово \'Красный\' и цвет слова на нижней табличке тоже красный</string>
 </resources>

@@ -1,7 +1,10 @@
 package com.example.logicgames;
 
+import static android.widget.Toast.LENGTH_SHORT;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,11 +14,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.Random;
 
 
 public class Mathematics extends AppCompatActivity {
-    private TextView expression1, expression2, scoreView, timer, lives;
+    private TextView expression1;
+    private TextView expression2;
+    private TextView scoreView;
+    public TextView mathRec;
+    private TextView timer;
+    private TextView lives;
     private Button firstButton, equalButton, secondButton;
     private int score = 0;
     int lvs = 3;
@@ -39,7 +51,7 @@ public class Mathematics extends AppCompatActivity {
                     if (num2 != 0) {
                         return num1 / num2;
                     } else {
-                        Toast.makeText(this, "Division by zero not allowed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Division by zero not allowed", LENGTH_SHORT).show();
                         return 0;
                     }
             }
@@ -89,6 +101,7 @@ public class Mathematics extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void checkAnswer(int a) {
         try {
             String expressionStr1 = expression1.getText().toString();
@@ -114,6 +127,10 @@ public class Mathematics extends AppCompatActivity {
                 if (lvs == 0) {
                     Intent intent1 = new Intent(Mathematics.this, GuestMode.class);
                     startActivity(intent1);
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference("users").child(Register.name).child("Math Record");
+                    myRef.setValue(score);
+                    Toast.makeText(Mathematics.this, "Результат: " + score, Toast.LENGTH_LONG).show();
                     finish();
                 } else {
                     lvs -= 1;
@@ -142,6 +159,7 @@ public class Mathematics extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -156,19 +174,26 @@ public class Mathematics extends AppCompatActivity {
         secondButton = findViewById(R.id.secondButton);
         timer = findViewById(R.id.timer);
         lives = findViewById(R.id.lives);
+        mathRec = findViewById(R.id.mathematicsRecord);
 
 
         new CountDownTimer(30000, 1000) {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onTick(long l) {
                 timer.setText("0:" + l / 1000);
                 if ((l / 1000) < 10) timer.setText("0:0" + l / 1000);
             }
 
+            @SuppressLint("SetTextI18n")
             @Override
             public void onFinish() {
                 Intent intent1 = new Intent(Mathematics.this, GuestMode.class);
                 startActivity(intent1);
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("users").child(Register.name).child("Math Record");
+                myRef.setValue(score);
+                Toast.makeText(Mathematics.this, "Результат: " + score, Toast.LENGTH_LONG).show();
                 finish();
             }
         }.start();
