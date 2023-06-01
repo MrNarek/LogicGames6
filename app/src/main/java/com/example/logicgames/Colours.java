@@ -22,7 +22,10 @@ public class Colours extends AppCompatActivity {
     int pts = 0;
     int lvs = 3;
 
-
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
 
     public void generateColor(TextView clText, TextView clColor, String[] clTexts, String[] clColors) {
         btnYes.setBackgroundColor(Color.parseColor("#BDB7AB"));

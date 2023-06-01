@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -130,7 +131,7 @@ public class Mathematics extends AppCompatActivity {
                     Intent intent1 = new Intent(Mathematics.this, GuestMode.class);
                     startActivity(intent1);
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    DatabaseReference myRef = database.getReference("users").child("User").child("Math Record");
+                    DatabaseReference myRef = database.getReference("users").child("User").child("mathRec");
                     myRef.setValue(score);
                     Toast.makeText(Mathematics.this, "Результат: " + score, Toast.LENGTH_LONG).show();
                     finish();
@@ -193,7 +194,7 @@ public class Mathematics extends AppCompatActivity {
                 Intent intent1 = new Intent(Mathematics.this, GuestMode.class);
                 startActivity(intent1);
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("users").child("User").child("Math Record");
+                DatabaseReference myRef = database.getReference("users").child("User").child("mathRec");
                 myRef.setValue(score);
                 Toast.makeText(Mathematics.this, "Результат: " + score, Toast.LENGTH_LONG).show();
                 finish();
@@ -222,5 +223,12 @@ public class Mathematics extends AppCompatActivity {
             });
 
             generateExpressions();
+        }
+
+
+
+        public void onBackPressed() {
+            super.onBackPressed();
+            this.finish();
         }
     }

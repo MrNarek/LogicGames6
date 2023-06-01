@@ -46,7 +46,7 @@ public class Login extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!validateName() | !validatePassword()) {
+                if (!validateEmail() | !validatePassword()) {
 
                 } else {
                     checkUser();
@@ -120,6 +120,7 @@ public class Login extends AppCompatActivity {
         String userName = loginName.getText().toString().trim();
         String userPassword = loginPassword.getText().toString().trim();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
         if (user != null) {
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
 
@@ -127,11 +128,12 @@ public class Login extends AppCompatActivity {
             reference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if (snapshot.hasChild(userName)) {
+                    if (Objects.equals(snapshot.child("User").child("email").getValue(String.class), userName)) {
                         loginName.setError(null);
-                        String passwordFromDB = snapshot.child(userName).child("password").getValue(String.class);
+                        String passwordFromDB = snapshot.child("User").child("password").getValue(String.class);
 
                         if (Objects.equals(passwordFromDB, userPassword)) {
+
                             loginName.setError(null);
                             Intent intent = new Intent(Login.this, HomeActivity.class);
                             startActivity(intent);
@@ -154,5 +156,19 @@ public class Login extends AppCompatActivity {
             });
         }
 
+    }
+    private boolean validateEmail() {
+        String emailInput = loginName.getText().toString();
+
+        if (emailInput.isEmpty()) {
+            loginName.setError("Field can't be empty");
+            return false;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
+            loginName.setError("Please enter a valid email address");
+            return false;
+        } else {
+            loginName.setError(null);
+            return true;
+        }
     }
 }

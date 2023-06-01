@@ -56,6 +56,7 @@ public class Register extends AppCompatActivity {
                 if (validateEmail() && validatePassword()) {
                     database = FirebaseDatabase.getInstance();
                     reference = database.getReference("users");
+                    reference.setValue("User");
                     String name = signupName.getText().toString();
                     String email = signupEmail.getText().toString();
                     String password = signupPassword.getText().toString();
@@ -84,10 +85,8 @@ public class Register extends AppCompatActivity {
                             Toast.makeText(Register.this, Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                     });
                     String id2 = reference.getKey();
-                    HelperClass helperClass = new HelperClass(name, email, password, id2);
-                    String id = reference.push().getKey();
-                    assert id != null;
-                    reference.child(name).setValue(helperClass);
+                    HelperClass helperClass = new HelperClass(name, email, password, id2, 0);
+                    reference.child("User").setValue(helperClass);
                     Toast.makeText(Register.this, "You have signup successfully!", Toast.LENGTH_SHORT).show();
                 }
             }
