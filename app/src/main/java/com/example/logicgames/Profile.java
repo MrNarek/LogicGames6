@@ -58,16 +58,17 @@ public class Profile extends Fragment {
     public void showUserData() {
         user = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference usersRef = database.getReference("users").child(user.getUid());
+        DatabaseReference usersRef = database.getReference("users");
+        String userName = user.getDisplayName();
 
 
-        usersRef.addValueEventListener(new ValueEventListener() {
+        usersRef.child(Objects.requireNonNull(userName)).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
               for (DataSnapshot userSnapshot : snapshot.getChildren()) {
-                  String name = userSnapshot.child("name").getValue(String.class);
-                  String email = userSnapshot.child("email").getValue(String.class);
-                  String password = userSnapshot.child("password").getValue(String.class);
+                  String name = userSnapshot.child(userName).child("name").getValue(String.class);
+                  String email = userSnapshot.child(userName).child("email").getValue(String.class);
+                  String password = userSnapshot.child(userName).child("password").getValue(String.class);
                   //long mathRec = userSnapshot.child("Math Record").getValue(long.class);
                   //profileMathRec.setText("" + mathRec);
                   profileName.setText(name);

@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class HelperClass {
     String name, email, password, id;
+    int mathRec = 0;
 
 
 
@@ -40,6 +41,7 @@ public class HelperClass {
         this.name = name;
         this.email = email;
         this.password = password;
+        //this.mathRec = mathRec;
     }
 
     public HelperClass() {

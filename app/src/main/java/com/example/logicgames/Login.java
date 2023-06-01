@@ -28,7 +28,7 @@ import java.util.Objects;
 
 public class Login extends AppCompatActivity {
 
-    EditText loginName, loginPassword;
+    public static EditText loginName, loginPassword;
     Button loginButton;
     TextView signupRedirectText;
     boolean passwordVisible;
