@@ -30,8 +30,9 @@ import java.util.Objects;
 public class Profile extends Fragment {
     TextView profileName, profileEmail, profilePassword;
     TextView titleName;
-    TextView colorsRec, mathRec;
+    TextView colorsRec, profileMathRec;
     private FirebaseAuth mAuth;
+    FirebaseUser user;
     String nameUser, emailUser, passwordUser;
     private DatabaseReference myRef;
 
@@ -46,7 +47,7 @@ public class Profile extends Fragment {
          profileEmail = root.findViewById(R.id.profileEmail);
          profilePassword = root.findViewById(R.id.profilePassword);
          colorsRec = root.findViewById(R.id.colorsRecord);
-         mathRec = root.findViewById(R.id.mathematicsRecord);
+         profileMathRec = root.findViewById(R.id.mathematicsRecord);
 
 
          showUserData();
@@ -55,8 +56,9 @@ public class Profile extends Fragment {
     }
 
     public void showUserData() {
+        user = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference usersRef = database.getReference("users");
+        DatabaseReference usersRef = database.getReference("users").child(user.getUid());
 
 
         usersRef.addValueEventListener(new ValueEventListener() {
@@ -66,11 +68,11 @@ public class Profile extends Fragment {
                   String name = userSnapshot.child("name").getValue(String.class);
                   String email = userSnapshot.child("email").getValue(String.class);
                   String password = userSnapshot.child("password").getValue(String.class);
-                  String ProfMathRec = userSnapshot.child("Math Rec").getValue(String.class);
+                  //long mathRec = userSnapshot.child("Math Record").getValue(long.class);
+                  //profileMathRec.setText("" + mathRec);
                   profileName.setText(name);
                   profileEmail.setText(email);
                   profilePassword.setText(password);
-                  mathRec.setText(ProfMathRec);
               }
             }
 

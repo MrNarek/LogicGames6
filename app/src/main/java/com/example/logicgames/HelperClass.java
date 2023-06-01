@@ -1,7 +1,13 @@
 package com.example.logicgames;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class HelperClass {
-    String name, email, password;
+    String name, email, password, id;
+
+
+
 
     public String getName() {
         return name;
@@ -29,12 +35,17 @@ public class HelperClass {
         this.password = password;
     }
 
-    public HelperClass(String name, String email, String password) {
+    public HelperClass(String name, String email, String password, String id) {
+        this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
     }
 
     public HelperClass() {
+
     }
+
+
+
 }

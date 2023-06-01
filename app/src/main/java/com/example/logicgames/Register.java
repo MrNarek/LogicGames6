@@ -21,6 +21,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -29,8 +31,8 @@ public class Register extends AppCompatActivity {
     TextView loginRedirectText;
     Button signupButton;
     FirebaseDatabase database;
-    public static String name;
     DatabaseReference reference;
+    public static String id;
     boolean passwordVisible;
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -54,8 +56,7 @@ public class Register extends AppCompatActivity {
                 if (validateEmail() && validatePassword()) {
                     database = FirebaseDatabase.getInstance();
                     reference = database.getReference("users");
-                    reference.setValue("User");
-                    name = signupName.getText().toString();
+                    String name = signupName.getText().toString();
                     String email = signupEmail.getText().toString();
                     String password = signupPassword.getText().toString();
 
@@ -82,13 +83,16 @@ public class Register extends AppCompatActivity {
                         } else
                             Toast.makeText(Register.this, Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                     });
-                    HelperClass helperClass = new HelperClass(name, email, password);
+                    String id2 = reference.getKey();
+                    HelperClass helperClass = new HelperClass(name, email, password, id2);
+                    String id = reference.push().getKey();
+                    assert id != null;
                     reference.child(name).setValue(helperClass);
-
                     Toast.makeText(Register.this, "You have signup successfully!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
 
         signupPassword.setOnTouchListener(new View.OnTouchListener() {
             @Override

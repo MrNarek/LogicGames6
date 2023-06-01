@@ -1,12 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.firebase:firebase-database-ktx:20.2.1@aar">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../LogicGames4/LogicGames3/caches/transforms-3/adb53bf1830dd5c4f70443793c086684/transformed/jetified-firebase-database-ktx-20.2.1/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/../LogicGames4/LogicGames3/caches/transforms-3/adb53bf1830dd5c4f70443793c086684/transformed/jetified-firebase-database-ktx-20.2.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/adb53bf1830dd5c4f70443793c086684/transformed/jetified-firebase-database-ktx-20.2.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/adb53bf1830dd5c4f70443793c086684/transformed/jetified-firebase-database-ktx-20.2.1/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../LogicGames4/LogicGames3/caches/modules-2/files-2.1/com.google.firebase/firebase-database-ktx/20.2.1/62cd36d5010d9ffd7e138146bd76ff73d0b35897/firebase-database-ktx-20.2.1-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-database-ktx/20.2.1/62cd36d5010d9ffd7e138146bd76ff73d0b35897/firebase-database-ktx-20.2.1-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

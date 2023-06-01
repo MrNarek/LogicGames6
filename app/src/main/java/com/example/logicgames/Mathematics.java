@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -29,7 +30,8 @@ public class Mathematics extends AppCompatActivity {
     private TextView timer;
     private TextView lives;
     private Button firstButton, equalButton, secondButton;
-    private int score = 0;
+    int score = 0;
+    FirebaseAuth mAuth;
     int lvs = 3;
 
     // Method to evaluate a math expression and return the result
@@ -128,7 +130,7 @@ public class Mathematics extends AppCompatActivity {
                     Intent intent1 = new Intent(Mathematics.this, GuestMode.class);
                     startActivity(intent1);
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
-                    DatabaseReference myRef = database.getReference("users").child(Register.name).child("Math Record");
+                    DatabaseReference myRef = database.getReference("users").child("User").child("Math Record");
                     myRef.setValue(score);
                     Toast.makeText(Mathematics.this, "Результат: " + score, Toast.LENGTH_LONG).show();
                     finish();
@@ -191,7 +193,7 @@ public class Mathematics extends AppCompatActivity {
                 Intent intent1 = new Intent(Mathematics.this, GuestMode.class);
                 startActivity(intent1);
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("users").child(Register.name).child("Math Record");
+                DatabaseReference myRef = database.getReference("users").child("User").child("Math Record");
                 myRef.setValue(score);
                 Toast.makeText(Mathematics.this, "Результат: " + score, Toast.LENGTH_LONG).show();
                 finish();
