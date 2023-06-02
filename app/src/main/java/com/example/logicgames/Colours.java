@@ -54,7 +54,7 @@ public class Colours extends AppCompatActivity {
     }
 
         public void generateColorNo(TextView clText, TextView clColor, String[] clTexts, String[] clColors) {
-            btnNo.setBackgroundColor(Color.parseColor("#59575E"));
+            btnNo.setBackgroundColor(Color.parseColor("#59515E"));
             Handler handler = new Handler();
             Runnable x = new Runnable() {
                 @Override
