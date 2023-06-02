@@ -5,7 +5,16 @@ import java.util.Map;
 
 public class HelperClass {
     String name, email, password, id;
-    int mathRec;
+    int mathRec, coloursRec;
+
+
+
+    public int getcoloursRec() {
+        return coloursRec;
+    }
+    public void setcoloursRec(int colouesRec) {
+        this.coloursRec = mathRec;
+    }
 
 
     public int getmathRec() {
@@ -42,12 +51,13 @@ public class HelperClass {
         this.password = password;
     }
 
-    public HelperClass(String name, String email, String password, String id, int mathRec) {
+    public HelperClass(String name, String email, String password, String id, int mathRec, int coloursRec) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
         this.mathRec = mathRec;
+        this.coloursRec = coloursRec;
     }
 
     public HelperClass() {

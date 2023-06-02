@@ -1,5 +1,6 @@
 package com.example.logicgames;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -12,6 +13,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Random;
 
@@ -28,7 +35,7 @@ public class Colours extends AppCompatActivity {
     }
 
     public void generateColor(TextView clText, TextView clColor, String[] clTexts, String[] clColors) {
-        btnYes.setBackgroundColor(Color.parseColor("#BDB7AB"));
+        btnYes.setBackgroundColor(Color.parseColor("#59515E"));
         Handler handler = new Handler();
         Runnable x = new Runnable() {
             @Override
@@ -47,7 +54,7 @@ public class Colours extends AppCompatActivity {
     }
 
         public void generateColorNo(TextView clText, TextView clColor, String[] clTexts, String[] clColors) {
-            btnNo.setBackgroundColor(Color.parseColor("#BDB7AB"));
+            btnNo.setBackgroundColor(Color.parseColor("#59575E"));
             Handler handler = new Handler();
             Runnable x = new Runnable() {
                 @Override
@@ -90,8 +97,28 @@ public class Colours extends AppCompatActivity {
             public void onFinish() {
                 Intent intent1 = new Intent(Colours.this, GuestMode.class);
                 startActivity(intent1);
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference usersRef = database.getReference("users");
+                DatabaseReference myRef = database.getReference("users").child("User").child("coloursRec");
+                usersRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+                            long mathRec = userSnapshot.child("coloursRec").getValue(long.class);
+                            if (pts > mathRec) {
+                                myRef.setValue(pts);
+                            }
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+                Toast.makeText(Colours.this, "Результат: " + pts, Toast.LENGTH_LONG).show();
                 finish();
-                isTimerTicking = false;
             }
         }.start();
 
@@ -187,6 +214,27 @@ public class Colours extends AppCompatActivity {
                     if (lvs == 0) {
                         Intent intent1 = new Intent(Colours.this, GuestMode.class);
                         startActivity(intent1);
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference usersRef = database.getReference("users");
+                        DatabaseReference myRef = database.getReference("users").child("User").child("coloursRec");
+                        usersRef.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+                                    long mathRec = userSnapshot.child("coloursRec").getValue(long.class);
+                                    if (pts > mathRec) {
+                                        myRef.setValue(pts);
+                                    }
+
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                        Toast.makeText(Colours.this, "Результат: " + pts, Toast.LENGTH_LONG).show();
                         finish();
                     } else {
                         lvs -= 1;
@@ -285,6 +333,27 @@ public class Colours extends AppCompatActivity {
                     if (lvs == 0) {
                         Intent intent1 = new Intent(Colours.this, GuestMode.class);
                         startActivity(intent1);
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference usersRef = database.getReference("users");
+                        DatabaseReference myRef = database.getReference("users").child("User").child("coloursRec");
+                        usersRef.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+                                    long mathRec = userSnapshot.child("coloursRec").getValue(long.class);
+                                    if (pts > mathRec) {
+                                        myRef.setValue(pts);
+                                    }
+
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                        Toast.makeText(Colours.this, "Результат: " + pts, Toast.LENGTH_LONG).show();
                         finish();
                     } else {
                         lvs -= 1;

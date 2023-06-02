@@ -85,7 +85,7 @@ public class Register extends AppCompatActivity {
                             Toast.makeText(Register.this, Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                     });
                     String id2 = reference.getKey();
-                    HelperClass helperClass = new HelperClass(name, email, password, id2, 0);
+                    HelperClass helperClass = new HelperClass(name, email, password, id2, 0, 0);
                     reference.child("User").setValue(helperClass);
                     Toast.makeText(Register.this, "You have signup successfully!", Toast.LENGTH_SHORT).show();
                 }

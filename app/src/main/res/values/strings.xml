@@ -10,4 +10,5 @@
     <string name="choose_game_mode">  Choose game mode</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hintColors">В этой игре вам нужно определить совпадает ли значение текста на верхней табличке с цветом текста на нижней, и нажать на соответствущую кнопку. В этом примере ответ \'ДА\' потому что на верхней табличке слово \'Красный\' и цвет слова на нижней табличке тоже красный</string>
+    <string name="PersonalRecords">Персональные рекорды</string>
 </resources>

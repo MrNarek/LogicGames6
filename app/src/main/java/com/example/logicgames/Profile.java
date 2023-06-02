@@ -30,7 +30,7 @@ import java.util.Objects;
 public class Profile extends Fragment {
     TextView profileName, profileEmail, profilePassword;
     TextView titleName;
-    TextView colorsRec, profileMathRec;
+    TextView profileColoursRec, profileMathRec;
     private FirebaseAuth mAuth;
     FirebaseUser user;
     String nameUser, emailUser, passwordUser;
@@ -46,7 +46,7 @@ public class Profile extends Fragment {
          profileName = root.findViewById(R.id.profileName);
          profileEmail = root.findViewById(R.id.profileEmail);
          profilePassword = root.findViewById(R.id.profilePassword);
-         colorsRec = root.findViewById(R.id.colorsRecord);
+         profileColoursRec = root.findViewById(R.id.colorsRecord);
          profileMathRec = root.findViewById(R.id.mathematicsRecord);
 
 
@@ -69,7 +69,9 @@ public class Profile extends Fragment {
                             String email = userSnapshot.child("email").getValue(String.class);
                             String password = userSnapshot.child("password").getValue(String.class);
                             long mathRec = userSnapshot.child("mathRec").getValue(long.class);
+                            long coloursRec = userSnapshot.child("coloursRec").getValue(long.class);
                             profileMathRec.setText("" + mathRec);
+                            profileColoursRec.setText("" + coloursRec);
                             profileName.setText(name);
                             profileEmail.setText(email);
                             profilePassword.setText(password);
